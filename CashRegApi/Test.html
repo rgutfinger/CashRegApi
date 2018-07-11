@@ -10,13 +10,42 @@
 
             var scan = {
                 Code: "123",
-                Quantity: 3
+                Quantity: 3,
+                Weight:0
             };
 
 
             $.ajax({
                 type: "POST",
                 url: 'http://localhost:58873/Api/values/ScanByQuantity', //change to your url
+                data: JSON.stringify(scan), // pass json object to web api
+                contentType: 'application/json',
+                success: function (data, textStatus, xhr) {
+                    alert('success!');
+                    console.log(data);
+
+                },
+
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    console.log('a' + textStatus);
+
+                }
+            });
+        }
+
+        function scanByWeight() {
+
+            var scan = {
+                Code: "123",
+                Quantity: 0,
+                Weight: 10
+            };
+
+
+            $.ajax({
+                type: "POST",
+                url: 'http://localhost:58873/Api/values/ScanByWeight', //change to your url
                 data: JSON.stringify(scan), // pass json object to web api
                 contentType: 'application/json',
                 success: function (data, textStatus, xhr) {
@@ -59,7 +88,8 @@
 </head>
 <body>
     <input type="button" value="Test" onclick="test()" accesskey="T" />
-    <input type="button" value="Scan By Quanity" onclick="scanByQuantity()" accesskey="Q" />
+    <input type="button" value="Scan By Quantity" onclick="scanByQuantity()" accesskey="Q" />
+    <input type="button" value="Scan By Weight" onclick="scanByWeight()" accesskey="W" />
 
 </body>
 </html>

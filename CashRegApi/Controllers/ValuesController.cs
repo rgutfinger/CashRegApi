@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CashRegApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -26,14 +27,13 @@ namespace CashRegApi.Controllers
 		// POST api/values
 
 		[HttpPost]
-		[Route("ScanByQuantity")]
-		public void ScanByQuantity([FromBody]string code, [FromBody] int quantity)
+		//[Route("ScanByQuantity")]
+		public void ScanByQuantity([FromBody]ScanData data)
 		{
 		}
 
 		/*[HttpPost]
-		[Route("ScanByWeight")]
-		public void Post([FromBody]string code, [FromBody] double weight)
+		public void ScanByWeight([FromBody]ScanData data)
 		{
 		}*/
 
