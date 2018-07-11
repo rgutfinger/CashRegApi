@@ -11,6 +11,10 @@ namespace CashRegApi
 	{
 		public static void RegisterRoutes(RouteCollection routes)
 		{
+			// Web API routes
+			routes.MapMvcAttributeRoutes();
+
+			
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
