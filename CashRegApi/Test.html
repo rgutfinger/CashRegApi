@@ -3,13 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <title>test</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="//resources/demos/style.css">
     <!-- link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"-->
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-        function scanByQuanity() {
+        function scanByQuantity() {
 
             var scan = {
                 Code: "123",
@@ -19,7 +16,7 @@
 
             $.ajax({
                 type: "POST",
-                url: 'http://localhost:58873/api/ScanByQuanity', //change to your url
+                url: 'http://localhost:58873/Api/values/ScanByQuantity', //change to your url
                 data: JSON.stringify(scan), // pass json object to web api
                 contentType: 'application/json',
                 success: function (data, textStatus, xhr) {
@@ -35,12 +32,34 @@
                 }
             });
         }
+
+        function test() {
+            $.ajax({
+                type: "GET",
+                url: 'http://localhost:58873/Api/values/5', //change to your url
+                data: null,
+                contentType: 'application/json',
+                success: function (data, textStatus, xhr) {
+                    alert('success!');
+                    console.log(data);
+
+                },
+
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    console.log('a' + textStatus);
+
+                }
+            });
+
+        }
+
     </script>
 
 </head>
 <body>
-
-    <input type="button" value="Scan By Quanity" onclick="scanByQuanity()" accesskey="Q" />
+    <input type="button" value="Test" onclick="test()" accesskey="T" />
+    <input type="button" value="Scan By Quanity" onclick="scanByQuantity()" accesskey="Q" />
 
 </body>
 </html>

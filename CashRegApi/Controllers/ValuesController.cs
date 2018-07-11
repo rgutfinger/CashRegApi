@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace CashRegApi.Controllers
 {
-	[RoutePrefix("RegApi")]
+	//[RoutePrefix("RegApi")]
 	public class ValuesController : ApiController
 	{
 		// GET api/values
@@ -26,16 +26,16 @@ namespace CashRegApi.Controllers
 		// POST api/values
 
 		[HttpPost]
-		[Route("ScanByQuanity")]
-		public void Post([FromBody]string code, [FromBody] int quantity)
+		[Route("ScanByQuantity")]
+		public void ScanByQuantity([FromBody]string code, [FromBody] int quantity)
 		{
 		}
 
-		[HttpPost]
+		/*[HttpPost]
 		[Route("ScanByWeight")]
 		public void Post([FromBody]string code, [FromBody] double weight)
 		{
-		}
+		}*/
 
 
 		// PUT api/values/5
