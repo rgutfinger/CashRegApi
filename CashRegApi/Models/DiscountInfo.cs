@@ -5,10 +5,10 @@ using System.Web;
 
 namespace CashRegApi.Models
 {
-	public class ScanData
+	public class DiscountInfo
 	{
 		public string Code;
-		public int Quantity;
-		public double Weight;
+		public int TotalCount;
+		public double FreeCount;
 	}
 }

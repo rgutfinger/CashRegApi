@@ -188,6 +188,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DiscountInfo.cs" />
     <Compile Include="Models\ScanData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

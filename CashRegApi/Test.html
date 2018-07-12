@@ -28,7 +28,7 @@
 
                 error: function (xhr, textStatus, errorThrown) {
                     alert(errorThrown);
-                    console.log('a' + textStatus);
+                    console.log('Error: ' + textStatus);
 
                 }
             });
@@ -56,7 +56,7 @@
 
                 error: function (xhr, textStatus, errorThrown) {
                     alert(errorThrown);
-                    console.log('a' + textStatus);
+                    console.log('Error: ' + textStatus);
 
                 }
             });
@@ -79,12 +79,33 @@
 
                 error: function (xhr, textStatus, errorThrown) {
                     alert(errorThrown);
-                    console.log('a' + textStatus);
+                    console.log('Error: ' + textStatus);
 
                 }
             });
         }
 
+        function total() {
+
+            var discount = 20;
+
+            $.ajax({
+                type: "GET",
+                //contentType: 'application/json',
+                url: 'http://localhost:58873/Api/values/TotalCost',
+                success: function (data, textStatus, xhr) {
+                    alert('success!');
+                    console.log(data);
+
+                },
+
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    console.log('Error: ' + textStatus);
+
+                }
+            });
+        }
         function test() {
             $.ajax({
                 type: "GET",
@@ -99,7 +120,7 @@
 
                 error: function (xhr, textStatus, errorThrown) {
                     alert(errorThrown);
-                    console.log('a' + textStatus);
+                    console.log('Error: ' + textStatus);
 
                 }
             });
@@ -117,6 +138,8 @@
     <br />
 
     <input type="button" value="Discount by Percent" onclick="discountByPercent()" accesskey="D" />
+
+    <input type="button" value="Total" onclick="total()" accesskey="L" title="[Alt+L]" />
 
 
 </body>
