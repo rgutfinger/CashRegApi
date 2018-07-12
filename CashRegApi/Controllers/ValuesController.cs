@@ -16,7 +16,7 @@ namespace CashRegApi.Controllers
 	public class ValuesController : ApiController
 	{
 		static List<ScanData> s_data = new List<ScanData>();
-		static double? PercentDiscount = null;
+		static double? s_percentDiscount = null;
 		//static Dictionary<DiscountInfo> s_data = new List<ScanData>();
 
 		// GET api/values
@@ -39,7 +39,14 @@ namespace CashRegApi.Controllers
 				total += CalcPrice(data);
 				// next discount
 			}
-			td.Total =total;
+			
+			if (s_percentDiscount.HasValue)
+			{
+				double discount = s_percentDiscount.Value / 100.0;
+				total = total * (1 - discount);
+			}
+
+			td.Total = total;
 
 			return td;
 		}
