@@ -8,6 +8,10 @@ using System.Web.Http;
 
 namespace CashRegApi.Controllers
 {
+	// ASSUMPTIONS:
+	// 1. Only one person using (=calling) the cash register
+
+
 	[RoutePrefix("Api/Values")]
 	public class ValuesController : ApiController
 	{
