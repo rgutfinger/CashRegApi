@@ -65,8 +65,8 @@ namespace CashRegApi.Controllers
 
 		private double FetchPrice(string code)
 		{
-			// this method would read the price for the given code (say from a database)
-			// for now, it just 'translates' the code to a double as the price
+			// In the official product, this method would read the price for the given code (say from a database)
+			// For now, it just 'translates' the code to a double as the price
 
 			double price=0.0;
 			if (!double.TryParse(code, out price))
@@ -115,7 +115,9 @@ namespace CashRegApi.Controllers
 			return Request.CreateResponse(HttpStatusCode.OK, "Successful % discount");
 		}
 
-		public HttpResponseMessage PutDiscountByCount([FromBody]double percent)
+		[HttpPut]
+		[Route("DiscountByCount")]
+		public HttpResponseMessage PutDiscountByCount([FromBody]DiscountInfoEx discInfo)
 		{
 
 			return Request.CreateResponse(HttpStatusCode.OK, "Successful discount");

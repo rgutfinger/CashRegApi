@@ -5,9 +5,8 @@ using System.Web;
 
 namespace CashRegApi.Models
 {
-	public class DiscountInfo
+	public class DiscountInfoEx : DiscountInfo
 	{
-		public int TotalCount;
-		public double FreeCount;
+		public string Code;
 	}
 }

@@ -87,6 +87,34 @@
             });
         }
 
+        function discountByCount() {
+            var disc = {
+                Code:"123",
+                TotalCount:3,
+                FreeCount:1
+            };
+            
+
+            $.ajax({
+                type: "PUT",
+                url: 'http://localhost:58873/Api/values/DiscountByCount',
+                data: JSON.stringify(disc), // pass json object to web api
+                contentType: 'application/json',
+
+                success: function (data, textStatus, xhr) {
+                    alert('success!');
+                    console.log(data);
+
+                },
+
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(errorThrown);
+                    console.log('Error: ' + textStatus);
+
+                }
+            });
+        }
+
         function total() {
 
             var discount = 20;
@@ -139,7 +167,8 @@
     <br />
     <br />
 
-    <input type="button" value="Discount by Percent" onclick="discountByPercent()" accesskey="P"  title="[Alt+P]"/>
+    <input type="button" value="Discount by Percent" onclick="discountByPercent()" accesskey="P" title="[Alt+P]" />
+    <input type="button" value="Discount by Count" onclick="discountByCount()" accesskey="C" title="[Alt+C]" />
 
     <input type="button" value="Total" onclick="total()" accesskey="L" title="[Alt+L]" />
 
