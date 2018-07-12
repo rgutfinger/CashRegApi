@@ -106,12 +106,19 @@ namespace CashRegApi.Controllers
 
 
 		// PUT api/values/5
-		public void PutDiscountByPercent([FromBody]double percent)
+		[HttpPut]
+		[Route("DiscountByPercent/{percent:double}")]
+		public HttpResponseMessage DiscountByPercent([FromUri] double percent)
 		{
+			s_percentDiscount = percent;
+
+			return Request.CreateResponse(HttpStatusCode.OK, "Successful % discount");
 		}
 
-		public void PutDiscountByCount([FromBody]double percent)
+		public HttpResponseMessage PutDiscountByCount([FromBody]double percent)
 		{
+
+			return Request.CreateResponse(HttpStatusCode.OK, "Successful discount");
 		}
 
 
