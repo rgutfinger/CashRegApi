@@ -27,9 +27,15 @@ namespace CashRegApi.Controllers
 
 		[HttpGet]
 		[Route("TotalCost")]
-		public List<ScanData> GetTotalCost()
+		public TotalData GetTotalCost()
 		{
-			return s_data;
+			TotalData td = new TotalData();
+			td.Data = s_data;
+
+			//compute price..
+			td.Total =0;
+
+			return td;
 		}
 		// GET api/values/5
 
