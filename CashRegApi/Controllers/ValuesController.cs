@@ -32,11 +32,42 @@ namespace CashRegApi.Controllers
 			TotalData td = new TotalData();
 			td.Data = s_data;
 
-			//compute price..
-			td.Total =0;
+			double total = 0;//compute price.. ***
+			for (int ix=0; ix<s_data.Count(); ix++)
+			{
+				ScanData data = s_data[ix];
+				total += CalcPrice(data);
+				// next discount
+			}
+			td.Total =total;
 
 			return td;
 		}
+
+		private double CalcPrice(ScanData data)
+		{
+			double price=0.0;
+			double itemPrice = FetchPrice(data.Code);
+			if (data.Quantity > 0)
+				price = itemPrice * data.Quantity;
+			else if (data.Weight > 0)
+				price = itemPrice * data.Weight;
+
+			return price;
+		}
+
+		private double FetchPrice(string code)
+		{
+			// this method would read the price for the given code (say from a database)
+			// for now, it just 'translates' the code to a double as the price
+
+			double price=0.0;
+			if (!double.TryParse(code, out price))
+				throw new Exception("No price for code"); //refine err
+
+			return price;
+		}
+
 		// GET api/values/5
 
 		public string Get(int id)
