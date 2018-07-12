@@ -6,6 +6,10 @@
     <!-- link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"-->
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script>
+
+        // ASSUMPTION: buttons are not pressed faster than processing as using AJAX
+        // button event handlers are not synchronous
+
         function scanByQuantity() {
 
             var scan = {
@@ -37,7 +41,7 @@
         function scanByWeight() {
 
             var scan = {
-                Code: "123",
+                Code: "25",
                 Quantity: 0,
                 Weight: 10
             };
