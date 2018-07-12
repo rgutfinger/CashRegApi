@@ -17,7 +17,7 @@ namespace CashRegApi.Controllers
 	{
 		static List<ScanData> s_data = new List<ScanData>();
 		static double? s_percentDiscount = null;
-		//static Dictionary<DiscountInfo> s_data = new List<ScanData>();
+		static Dictionary<string, DiscountInfo> s_discounts = new Dictionary<string, DiscountInfo>();
 
 		// GET api/values
 		public IEnumerable<string> Get()
@@ -117,8 +117,13 @@ namespace CashRegApi.Controllers
 
 		[HttpPut]
 		[Route("DiscountByCount")]
-		public HttpResponseMessage PutDiscountByCount([FromBody]DiscountInfoEx discInfo)
+		public HttpResponseMessage DiscountByCount([FromBody]DiscountInfoEx discInfoEx)
 		{
+			DiscountInfo di = DiscountInfo.Create(discInfoEx);
+			if (!s_discounts.ContainsKey(discInfoEx.Code))
+				s_discounts.Add(discInfoEx.Code, di);
+			else
+				throw new Exception("Repeated discount"); //test refine err
 
 			return Request.CreateResponse(HttpStatusCode.OK, "Successful discount");
 		}

@@ -9,5 +9,14 @@ namespace CashRegApi.Models
 	{
 		public int TotalCount;
 		public double FreeCount;
+
+		public static DiscountInfo Create(DiscountInfoEx dex)
+		{
+			DiscountInfo info = new DiscountInfo();
+			info.TotalCount = dex.TotalCount;
+			info.FreeCount = dex.FreeCount;
+
+			return info;
+		}
 	}
 }
