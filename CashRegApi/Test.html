@@ -73,8 +73,6 @@
             $.ajax({
                 type: "PUT",
                 url: 'http://localhost:58873/Api/values/DiscountByPercent/' + discount,
-                //data: discount,
-                contentType: 'application/json', 
                 success: function (data, textStatus, xhr) {
                     alert('success!');
                     console.log(data);
