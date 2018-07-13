@@ -138,7 +138,16 @@ namespace CashRegApi.Controllers
 			if (!s_discounts.ContainsKey(discInfoEx.Code))
 				s_discounts.Add(discInfoEx.Code, di);
 			else
-				throw new Exception("Repeated discount"); //test refine err
+			{
+				HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.BadRequest)
+
+				{
+					Content = new StringContent(string.Format("Repeated discount for Code '{0}'", discInfoEx.Code)),
+					ReasonPhrase = "Repeat discount"
+				};
+
+				throw new HttpResponseException(response);
+			}
 
 			return Request.CreateResponse(HttpStatusCode.OK, "Successful discount");
 		}
