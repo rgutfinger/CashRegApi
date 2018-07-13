@@ -8,7 +8,8 @@ using System.Web.Http;
 
 namespace CashRegApi.Controllers
 {
-	// ASSUMPTIONS:
+	// ************************************************************************************
+	// ASSUMPTIONS
 	// 1. Only one person using (=calling) the cash register
 
 
