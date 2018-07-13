@@ -22,57 +22,6 @@ namespace CashRegApi.Controllers
 		static double? s_percentDiscount = null;
 		static Dictionary<string, DiscountInfo> s_discounts = new Dictionary<string, DiscountInfo>();
 
-		[HttpGet]
-		[Route("TotalCost")]
-		public TotalData GetTotalCost()
-		{
-			TotalData td = new TotalData();
-			td.Data = s_data;
-
-			double total = 0;
-
-			// 1. total prices of items
-			for (int ix=0; ix<s_data.Count(); ix++)
-			{
-				ScanData data = s_data[ix];
-				total += CalcPrice(data);				
-			}
-
-			// 2. apply count-based discounts (if any)
-			double countDisc = 0;
-			if (s_discounts.Count() > 0)
-			{
-				foreach (string code in s_discounts.Keys)
-				{
-					DiscountInfo di = s_discounts[code];
-					List<ScanData> items = s_data.Where(d => d.Code.Equals(code, StringComparison.InvariantCultureIgnoreCase)).ToList();
-					int num = 0;
-					if (items.Count > 0)
-						num = items.Sum(d => d.Quantity);
-
-					if (num > di.TotalCount)
-					{
-						int mult = (num / di.TotalCount);
-						int numFree = di.FreeCount * mult;
-						double value = numFree * FetchPrice(code);
-						countDisc += value;
-					}
-				}
-				total -= countDisc;
-			}
-
-			// 3. apply percent-based discount (if any)
-			if (s_percentDiscount.HasValue)
-			{
-				double discount = s_percentDiscount.Value / 100.0;
-				total = total * (1 - discount);
-			}
-
-			td.Total = total;
-
-			return td;
-		}
-
 		private double CalcPrice(ScanData data)
 		{
 			double price=0.0;
@@ -152,6 +101,57 @@ namespace CashRegApi.Controllers
 			}
 
 			return Request.CreateResponse(HttpStatusCode.OK, "Successful discount");
+		}
+
+		[HttpGet]
+		[Route("TotalCost")]
+		public TotalData GetTotalCost()
+		{
+			TotalData td = new TotalData();
+			td.Data = s_data;
+
+			double total = 0;
+
+			// 1. total prices of items
+			for (int ix = 0; ix < s_data.Count(); ix++)
+			{
+				ScanData data = s_data[ix];
+				total += CalcPrice(data);
+			}
+
+			// 2. apply count-based discounts (if any)
+			if (s_discounts.Count() > 0)
+			{
+				double countDisc = 0;
+				foreach (string code in s_discounts.Keys)
+				{
+					DiscountInfo di = s_discounts[code];
+					List<ScanData> items = s_data.Where(d => d.Code.Equals(code, StringComparison.InvariantCultureIgnoreCase)).ToList();
+					int num = 0;
+					if (items.Count > 0)
+						num = items.Sum(d => d.Quantity);
+
+					if (num > di.TotalCount)
+					{
+						int mult = (num / di.TotalCount);
+						int numFree = di.FreeCount * mult;
+						double value = numFree * FetchPrice(code);
+						countDisc += value;
+					}
+				}
+				total -= countDisc;
+			}
+
+			// 3. apply percent-based discount (if any)
+			if (s_percentDiscount.HasValue)
+			{
+				double discount = s_percentDiscount.Value / 100.0;
+				total = total * (1 - discount);
+			}
+
+			td.Total = total;
+
+			return td;
 		}
 
 
