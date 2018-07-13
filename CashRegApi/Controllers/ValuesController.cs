@@ -95,7 +95,15 @@ namespace CashRegApi.Controllers
 
 			double price=0.0;
 			if (!double.TryParse(code, out price))
-				throw new Exception("No price for code"); //refine err
+			{
+				HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.BadRequest)
+				{
+					Content = new StringContent(string.Format("No price for code '{0}'", code)),
+					ReasonPhrase = "No price for code"
+				};
+
+				throw new HttpResponseException(response);
+			}
 
 			return price;
 		}
@@ -138,7 +146,6 @@ namespace CashRegApi.Controllers
 			else
 			{
 				HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.BadRequest)
-
 				{
 					Content = new StringContent(string.Format("Repeated discount for Code '{0}'", discInfoEx.Code)),
 					ReasonPhrase = "Repeat discount"
