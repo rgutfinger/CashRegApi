@@ -1,7 +1,9 @@
-﻿using System;
+﻿using CashRegApi.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 
 namespace CashRegApi
 {
@@ -19,6 +21,8 @@ namespace CashRegApi
 				routeTemplate: "api/{controller}/{id}",
 				defaults: new { id = RouteParameter.Optional }
 			);
+
+			config.Services.Replace(typeof(IExceptionHandler), new GlobalExceptionHandler());
 		}
 	}
 }
