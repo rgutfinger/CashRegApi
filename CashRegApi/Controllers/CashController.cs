@@ -12,8 +12,8 @@ namespace CashRegApi.Controllers
 	// 1. Only one person using (=calling) the cash register
 
 
-	[RoutePrefix("Api/Values")]
-	public class ValuesController : ApiController
+	[RoutePrefix("Api/Cash")]
+	public class CashController : ApiController
 	{
 		static List<ScanData> s_data = new List<ScanData>();
 		static double? s_percentDiscount = null;
