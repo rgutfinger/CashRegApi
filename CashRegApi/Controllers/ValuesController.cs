@@ -106,8 +106,6 @@ namespace CashRegApi.Controllers
 		{
 			s_data.Add(data);
 
-			//** test exception..or catch throw responseExc- ck std***
-
 			return Request.CreateResponse(HttpStatusCode.OK, "Successful scan by quantity");
 		}
 
