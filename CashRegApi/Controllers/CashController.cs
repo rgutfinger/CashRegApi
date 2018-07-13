@@ -11,6 +11,8 @@ namespace CashRegApi.Controllers
 	// ************************************************************************************
 	// ASSUMPTIONS
 	// 1. Only one person using (=calling) the cash register
+	// 2. In the official product, the price for the given code will be read from a database
+	//    For now, the server just 'translates' the code to a double as the price.
 
 
 	[RoutePrefix("Api/Cash")]
