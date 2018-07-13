@@ -136,12 +136,10 @@
                 }
             });
         }
-        function test() {
+        function restart() {
             $.ajax({
-                type: "GET",
-                url: 'http://localhost:58873/Api/values/5', //change to your url
-                data: null,
-                contentType: 'application/json',
+                type: "DELETE",
+                url: 'http://localhost:58873/Api/values/Restart',
                 success: function (data, textStatus, xhr) {
                     alert('success!');
                     console.log(data);
@@ -172,6 +170,7 @@
 
     <input type="button" value="Total" onclick="total()" accesskey="L" title="[Alt+L]" />
 
+    <input type="button" value="Restart" onclick="restart()" accesskey="R" title="[Alt+R]" />
 
 </body>
 </html>

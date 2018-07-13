@@ -94,16 +94,7 @@ namespace CashRegApi.Controllers
 
 			return price;
 		}
-
-		// GET api/values/5
-
-		public string Get(int id)
-		{
-			return "value";
-		}
-
-		// POST api/values
-
+				
 		[HttpPost]
 		[Route("ScanByQuantity")]
 		public HttpResponseMessage ScanByQuantity([FromBody]ScanData data)
@@ -125,7 +116,6 @@ namespace CashRegApi.Controllers
 		}
 
 
-		// PUT api/values/5
 		[HttpPut]
 		[Route("DiscountByPercent/{percent:double}")]
 		public HttpResponseMessage DiscountByPercent([FromUri] double percent)
@@ -149,15 +139,14 @@ namespace CashRegApi.Controllers
 		}
 
 
-		// DELETE api/values/5
-		public void Delete(int id)
-		{
-		}
-
 		// DELETE all
+		[HttpDelete]
+		[Route("Restart")]
 		public void Restart()
 		{
-
+			s_data.Clear();
+			s_discounts.Clear();
+			s_percentDiscount = null;
 		}
 	}
 }
