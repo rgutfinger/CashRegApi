@@ -8,7 +8,7 @@ namespace CashRegApi.Models
 	public class DiscountInfo
 	{
 		public int TotalCount;
-		public double FreeCount;
+		public int FreeCount;
 
 		public static DiscountInfo Create(DiscountInfoEx dex)
 		{

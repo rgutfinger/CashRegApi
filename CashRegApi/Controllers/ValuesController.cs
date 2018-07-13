@@ -32,14 +32,34 @@ namespace CashRegApi.Controllers
 			TotalData td = new TotalData();
 			td.Data = s_data;
 
-			double total = 0;//compute price.. ***
+			double total = 0;
+
+			// 1. total prices of items
 			for (int ix=0; ix<s_data.Count(); ix++)
 			{
 				ScanData data = s_data[ix];
-				total += CalcPrice(data);
-				// next discount
+				total += CalcPrice(data);				
 			}
-			
+
+			// 2. apply count-based discounts (if any)
+			double countDisc = 0;
+			if (s_discounts.Count() > 0)
+			{
+				foreach (string code in s_discounts.Keys)
+				{
+					DiscountInfo di = s_discounts[code];
+					List<ScanData> items = s_data.Where(d => d.Code.Equals(code, StringComparison.InvariantCultureIgnoreCase)).ToList();
+					if (items.Count > di.TotalCount)
+					{
+						int mult = (items.Count / di.TotalCount);
+						int numFree = di.FreeCount * mult;
+						double value = numFree * FetchPrice(code);
+						countDisc += value;
+					}
+				}
+			}
+
+			// 3. apply percent-based discount (if any)
 			if (s_percentDiscount.HasValue)
 			{
 				double discount = s_percentDiscount.Value / 100.0;
