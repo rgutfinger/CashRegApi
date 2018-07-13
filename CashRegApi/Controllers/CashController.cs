@@ -20,12 +20,6 @@ namespace CashRegApi.Controllers
 		static double? s_percentDiscount = null;
 		static Dictionary<string, DiscountInfo> s_discounts = new Dictionary<string, DiscountInfo>();
 
-		// GET api/values
-		public IEnumerable<string> Get()
-		{
-			return new string[] { "value1", "value2" };
-		}
-
 		[HttpGet]
 		[Route("TotalCost")]
 		public TotalData GetTotalCost()
