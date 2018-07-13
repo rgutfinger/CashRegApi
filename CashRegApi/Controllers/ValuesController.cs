@@ -49,14 +49,19 @@ namespace CashRegApi.Controllers
 				{
 					DiscountInfo di = s_discounts[code];
 					List<ScanData> items = s_data.Where(d => d.Code.Equals(code, StringComparison.InvariantCultureIgnoreCase)).ToList();
-					if (items.Count > di.TotalCount)
+					int num = 0;
+					if (items.Count > 0)
+						num = items.Sum(d => d.Quantity);
+
+					if (num > di.TotalCount)
 					{
-						int mult = (items.Count / di.TotalCount);
+						int mult = (num / di.TotalCount);
 						int numFree = di.FreeCount * mult;
 						double value = numFree * FetchPrice(code);
 						countDisc += value;
 					}
 				}
+				total -= countDisc;
 			}
 
 			// 3. apply percent-based discount (if any)
