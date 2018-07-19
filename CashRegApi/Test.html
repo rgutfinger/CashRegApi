@@ -177,7 +177,7 @@
 
     <label style="display:inline-block; width:70px">Perecent</label>
     <input id="percent" type="number" value="5" min="0" max="100" style="width:40px" />
-    <input type="button" value="Percent Discount" 
+    <input type="button" value="Percent Discount"
            style="width:145px;background-image: url('Content//Images/Discount.png');background-repeat: no-repeat; background-position-x:right"
            onclick="discountByPercent()" accesskey="P" title="[Alt+P]" />
     <br />
@@ -187,19 +187,24 @@
     <input id="count" type="number" value="5" min="0" max="100" style="width:40px" />
     <label style="display:inline-block; width:100px">Free Count</label>
     <input id="count" type="number" value="5" min="0" max="100" style="width:40px" />
-    <input type="button" value="Discount by Count" 
+    <input type="button" value="Discount by Count"
            style="width:145px;background-image: url('Content//Images/DiscountCount.png');background-repeat: no-repeat; background-position-x:right"
            onclick="discountByCount()" accesskey="C" title="[Alt+C]" />
     <br />
-    <br />
+    <br style="line-height:20px" />
     <input type="button" value="Total"
            style="width:105px;background-image: url('Content//Images/Total.bmp');background-size:16px;background-repeat: no-repeat; background-position-x:right"
            onclick="total()" accesskey="T" title="[Alt+T]" />
     <br />
-    <br />
+    <br style="line-height:20px" />
     <input type="button" value="Restart"
            style="width:105px;background-image: url('Content//Images/Restart.png');background-size:18px;background-repeat: no-repeat; background-position-x:right"
            onclick="restart()" accesskey="R" title="[Alt+R]" />
+    <br />
+    <br style="line-height:20px" />
+
+    <label style="display:inline-block; width:100px">Status</label>
+    <input id="status" type="text" style="width:240px" />
 
 </body>
 </html>
