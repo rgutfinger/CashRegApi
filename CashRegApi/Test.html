@@ -161,7 +161,7 @@
 <body>
     <label style="display:inline-block; width:70px">Quantity</label>
     <input id="quantity" type="number" value="5" min="0" max="100" style="width:40px" />
-    <input type="button" value="Scan by Quantity" 
+    <input type="button" value="Scan by Quantity"
            style="width:145px;background-image: url('Content//Images/ScanQuantity.png');background-repeat: no-repeat; background-position-x:right"
            onclick="scanByQuantity()" accesskey="Q" title="[Alt+Q]" />
     <br />
@@ -169,22 +169,31 @@
 
     <label style="display:inline-block; width:70px">Weight</label>
     <input id="weight" type="number" value="5" min="0" max="100" style="width:40px" />
-    <input type="button" value="Scan by Weight" 
+    <input type="button" value="Scan by Weight"
            style="width:145px;background-image: url('Content//Images/ScanWeight.png');background-repeat: no-repeat; background-position-x:right"
            onclick="scanByWeight()" accesskey="W" title="[Alt+W]" />
     <br />
-    <br />
+    <br style="line-height:20px" />
 
+    <label style="display:inline-block; width:70px">Perecent</label>
+    <input id="percent" type="number" value="5" min="0" max="100" style="width:40px" />
     <input type="button" value="Discount by Percent" onclick="discountByPercent()" accesskey="P" title="[Alt+P]" />
+    <br />
+    <br style="line-height:20px" />
+
+    <label style="display:inline-block; width:70px">Count</label>
+    <input id="count" type="number" value="5" min="0" max="100" style="width:40px" />
+    <label style="display:inline-block; width:100px">Free Count</label>
+    <input id="count" type="number" value="5" min="0" max="100" style="width:40px" />
     <input type="button" value="Discount by Count" onclick="discountByCount()" accesskey="C" title="[Alt+C]" />
     <br />
     <br />
-    <input type="button" value="Total" 
+    <input type="button" value="Total"
            style="width:105px;background-image: url('Content//Images/Total.bmp');background-size:16px;background-repeat: no-repeat; background-position-x:right"
            onclick="total()" accesskey="T" title="[Alt+T]" />
     <br />
     <br />
-    <input type="button" value="Restart" 
+    <input type="button" value="Restart"
            style="width:105px;background-image: url('Content//Images/Restart.png');background-size:18px;background-repeat: no-repeat; background-position-x:right"
            onclick="restart()" accesskey="R" title="[Alt+R]" />
 
