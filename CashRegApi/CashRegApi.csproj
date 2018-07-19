@@ -204,6 +204,7 @@
     <Content Include="Content\Images\Restart.png" />
     <Content Include="Content\Images\ScanQuantity.png" />
     <Content Include="Content\Images\ScanWeight.png" />
+    <Content Include="Content\Images\Total.bmp" />
     <Content Include="Content\MyStyleSheet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
