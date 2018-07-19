@@ -159,17 +159,30 @@
 
 </head>
 <body>
-    <input type="button" value="Scan by Quantity" onclick="scanByQuantity()" accesskey="Q"  title="[Alt+Q]" />
-    <input type="button" value="Scan by Weight" onclick="scanByWeight()" accesskey="W"  title="[Alt+W]" />
+    <label style="display:inline-block; width:70px">Quantity</label>
+    <input id="quantity" type="number" value="5" min="0" max="100" style="width:40px" />
+    <input type="button" value="Scan by Quantity" style="width:130px"
+           onclick="scanByQuantity()" accesskey="Q" title="[Alt+Q]" />
+    <br />
+    <br style="line-height:20px" />
+
+    <label style="display:inline-block; width:70px">Weight</label>
+    <input id="weight" type="number" value="5" min="0" max="100" style="width:40px" />
+    <input type="button" value="Scan by Weight" style="width:130px"
+           onclick="scanByWeight()" accesskey="W" title="[Alt+W]" />
     <br />
     <br />
 
     <input type="button" value="Discount by Percent" onclick="discountByPercent()" accesskey="P" title="[Alt+P]" />
     <input type="button" value="Discount by Count" onclick="discountByCount()" accesskey="C" title="[Alt+C]" />
-
-    <input type="button" value="Total" onclick="total()" accesskey="T" title="[Alt+T]" />
-
-    <input type="button" value="Restart" onclick="restart()" accesskey="R" title="[Alt+R]" />
+    <br />
+    <br />
+    <input type="button" value="Total" style="width:80px"
+           onclick="total()" accesskey="T" title="[Alt+T]" />
+    <br />
+    <br />
+    <input type="button" value="Restart" style="width:80px"
+           onclick="restart()" accesskey="R" title="[Alt+R]" />
 
 </body>
 </html>
