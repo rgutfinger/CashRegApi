@@ -201,6 +201,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Restart.png" />
     <Content Include="Content\Images\ScanQuantity.png" />
     <Content Include="Content\Images\ScanWeight.png" />
     <Content Include="Content\MyStyleSheet.css" />
