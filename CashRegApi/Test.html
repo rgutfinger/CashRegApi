@@ -128,7 +128,8 @@
                 success: function (data, textStatus, xhr) {
                     $("#status").val("Success");
                     console.log(data);
-
+                    var total = data.Total;
+                    $("#total").val(total);
                 },
 
                 error: function (xhr, textStatus, errorThrown) {
@@ -145,7 +146,7 @@
                 success: function (data, textStatus, xhr) {
                     $("#status").val("Success");
                     console.log(data);
-
+                    $("#total").val("");
                 },
 
                 error: function (xhr, textStatus, errorThrown) {
