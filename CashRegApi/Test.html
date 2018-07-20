@@ -15,11 +15,9 @@
 
             var scan = {
                 Code: "123",
-                Quantity: 7,
+                Quantity: $("#quantity").val(),
                 Weight:0
             };
-
-            scan.Quantity = $("#quantity").val();
 
             $.ajax({
                 type: "POST",
