@@ -46,11 +46,9 @@
             var scan = {
                 Code: "25",
                 Quantity: 0,
-                Weight: 10
+                Weight: $("#weight").val()
             };
-
-            scan.Quantity = $("#weight").val();
-
+            
             $.ajax({
                 type: "POST",
                 url: 'http://localhost:58873/Api/Cash/ScanByWeight', //change to your url
