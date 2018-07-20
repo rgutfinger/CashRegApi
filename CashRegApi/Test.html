@@ -136,6 +136,12 @@
                     console.log(data);
                     var total = data.Total;
                     $("#total").val(total);
+
+                    var d = data.Data;
+                    for (var ix = 0; ix < d.length; ix++) {
+                        var sc = d[ix];
+                        console.log(sc);
+                    }
                 },
 
                 error: function (xhr, textStatus, errorThrown) {
