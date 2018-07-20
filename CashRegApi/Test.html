@@ -21,6 +21,7 @@
 
             $.ajax({
                 type: "POST",
+                async: false,
                 url: 'http://localhost:58873/Api/Cash/ScanByQuantity', //change to your url
                 data: JSON.stringify(scan), // pass json object to web api
                 contentType: 'application/json',
@@ -40,6 +41,7 @@
         }
 
         function scanByWeight() {
+            $("#status").val("");
 
             var scan = {
                 Code: "25",
@@ -49,6 +51,7 @@
             
             $.ajax({
                 type: "POST",
+                async: false,
                 url: 'http://localhost:58873/Api/Cash/ScanByWeight', //change to your url
                 data: JSON.stringify(scan), // pass json object to web api
                 contentType: 'application/json',
@@ -67,10 +70,13 @@
         }
 
         function discountByPercent() {
+            $("#status").val("");
+
             var discount = $("#percentDiscount").val();
 
             $.ajax({
                 type: "PUT",
+                async: false,
                 url: 'http://localhost:58873/Api/Cash/DiscountByPercent/' + discount,
                 success: function (data, textStatus, xhr) {
                     $("#status").val("Success");
@@ -87,6 +93,8 @@
         }
 
         function discountByCount() {
+            $("#status").val("");
+
             var disc = {
                 Code: "123",
                 TotalCount: $("#totalCount").val(),
@@ -96,6 +104,7 @@
 
             $.ajax({
                 type: "PUT",
+                async: false,
                 url: 'http://localhost:58873/Api/Cash/DiscountByCount',
                 data: JSON.stringify(disc), // pass json object to web api
                 contentType: 'application/json',
@@ -115,8 +124,11 @@
         }
 
         function total() {                        
+            $("#status").val("");
+
             $.ajax({
                 type: "GET",
+                async: false,
                 //contentType: 'application/json',
                 url: 'http://localhost:58873/Api/Cash/TotalCost',
                 success: function (data, textStatus, xhr) {
@@ -134,8 +146,11 @@
             });
         }
         function restart() {
+            $("#status").val("");
+
             $.ajax({
                 type: "DELETE",
+                async: false,
                 url: 'http://localhost:58873/Api/Cash/Restart',
                 success: function (data, textStatus, xhr) {
                     $("#status").val("Success");
