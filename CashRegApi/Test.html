@@ -14,7 +14,7 @@
             $("#status").val("");
 
             var scan = {
-                Code: "123",
+                Code: $("#code").val(),
                 Quantity: $("#quantity").val(),
                 Weight:0
             };
@@ -44,7 +44,7 @@
             $("#status").val("");
 
             var scan = {
-                Code: "25",
+                Code: $("#code").val(),
                 Quantity: 0,
                 Weight: $("#weight").val()
             };
@@ -96,7 +96,7 @@
             $("#status").val("");
 
             var disc = {
-                Code: "123",
+                Code: $("#code").val(),
                 TotalCount: $("#totalCount").val(),
                 FreeCount: $("#freeCount").val()
             };
@@ -171,6 +171,12 @@
 
 </head>
 <body>
+    <label style="display:inline-block; width:70px">Code</label>
+    <input id="code" type="number" value="123" min="100" max="999" style="width:45px" 
+           accesskey="O" title="[Alt+O]" />
+    <br />
+    <br style="line-height:20px" />
+
     <label style="display:inline-block; width:70px">Quantity</label>
     <input id="quantity" type="number" value="5" min="0" max="100" style="width:40px" />
     <input type="button" value="Scan by Quantity"
