@@ -67,8 +67,7 @@
         }
 
         function discountByPercent() {
-
-            var discount = 20;
+            var discount = $("#percentDiscount").val();
 
             $.ajax({
                 type: "PUT",
@@ -89,9 +88,9 @@
 
         function discountByCount() {
             var disc = {
-                Code:"123",
-                TotalCount:3,
-                FreeCount:1
+                Code: "123",
+                TotalCount: $("#totalCount").val(),
+                FreeCount: $("#freeCount").val()
             };
             
 
@@ -115,10 +114,7 @@
             });
         }
 
-        function total() {
-
-            var discount = 20;
-
+        function total() {                        
             $.ajax({
                 type: "GET",
                 //contentType: 'application/json',
@@ -177,17 +173,17 @@
     <br style="line-height:20px" />
 
     <label style="display:inline-block; width:70px">Perecent</label>
-    <input id="percent" type="number" value="5" min="0" max="100" style="width:40px" />
+    <input id="percentDiscount" type="number" value="5" min="0" max="100" style="width:40px" />
     <input type="button" value="Percent Discount"
            style="width:145px;background-image: url('Content//Images/Discount.png');background-repeat: no-repeat; background-position-x:right"
            onclick="discountByPercent()" accesskey="P" title="[Alt+P]" />
     <br />
     <br style="line-height:20px" />
 
-    <label style="display:inline-block; width:70px">Count</label>
-    <input id="count" type="number" value="5" min="0" max="100" style="width:40px" />
+    <label style="display:inline-block; width:100px">Total Count</label>
+    <input id="totalCount" type="number" value="3" min="0" max="100" style="width:40px" />
     <label style="display:inline-block; width:100px">Free Count</label>
-    <input id="count" type="number" value="5" min="0" max="100" style="width:40px" />
+    <input id="freeCount" type="number" value="1" min="0" max="100" style="width:40px" />
     <input type="button" value="Discount by Count"
            style="width:145px;background-image: url('Content//Images/DiscountCount.png');background-repeat: no-repeat; background-position-x:right"
            onclick="discountByCount()" accesskey="C" title="[Alt+C]" />
