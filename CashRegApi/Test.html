@@ -140,7 +140,11 @@
 
                     var d = data.Data;
 
-                    $("#tbl").empty(); // clear rows
+                    $("#tblBody").empty(); // clear rows
+
+                    if (d.length > 0)
+                        $("#tbl").attr("style", "display:block");  // display table
+
                     for (var ix = 0; ix < d.length; ix++) {
                         var sc = d[ix];
                         console.log(sc);
@@ -150,15 +154,15 @@
                         // ** next - create table.. ck examples for effective way
                         // maybe Razor..-but no model...
                         var txt = "<TR>";
-                        $("#tbl").append(txt);
+                        $("#tblBody").append(txt);
                         txt = $("<TD></TD>").text(sc.Code);  // Create text with jQuery
-                        $("#tbl").append(txt);
+                        $("#tblBody").append(txt);
                         txt = $("<TD></TD>").text(sc.Quantity);  // Create text with jQuery
-                        $("#tbl").append(txt);
+                        $("#tblBody").append(txt);
                         txt = $("<TD></TD>").text(sc.Weight);  // Create text with jQuery
-                        $("#tbl").append(txt);
+                        $("#tblBody").append(txt);
                         txt = "</TR>";
-                        $("#tbl").append(txt);
+                        $("#tblBody").append(txt);
                     }
                 },
 
@@ -180,6 +184,8 @@
                     $("#status").val("Success");
                     console.log(data);
                     $("#total").val("");
+
+                    $("#tbl").attr("style", "display:none");  // hide table
                 },
 
                 error: function (xhr, textStatus, errorThrown) {
@@ -254,19 +260,19 @@
     <br />
     <br />
 
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>Code</th>
-                <th>Quantity</th>
-                <th>Weight</th>
-            </tr>
-        </thead>
-        <tbody id="tbl">
-            
-        </tbody>
+    <div id="tbl" >
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Quantity</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            <tbody id="tblBody"></tbody>
 
-    </table>
+        </table>
+    </div>
 
 </body>
 </html>
