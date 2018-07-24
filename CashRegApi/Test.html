@@ -139,6 +139,8 @@
                     $("#total").val(total);
 
                     var d = data.Data;
+
+                    $("#tbl").empty(); // clear rows
                     for (var ix = 0; ix < d.length; ix++) {
                         var sc = d[ix];
                         console.log(sc);
