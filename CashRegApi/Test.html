@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>test</title>
     <!-- link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"-->
+    <link rel="stylesheet" href="content/bootstrap.css" />
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script>
 
@@ -16,7 +17,7 @@
             var scan = {
                 Code: $("#code").val(),
                 Quantity: $("#quantity").val(),
-                Weight:0
+                Weight: 0
             };
 
             $.ajax({
@@ -48,7 +49,7 @@
                 Quantity: 0,
                 Weight: $("#weight").val()
             };
-            
+
             $.ajax({
                 type: "POST",
                 async: false,
@@ -100,7 +101,7 @@
                 TotalCount: $("#totalCount").val(),
                 FreeCount: $("#freeCount").val()
             };
-            
+
 
             $.ajax({
                 type: "PUT",
@@ -123,7 +124,7 @@
             });
         }
 
-        function total() {                        
+        function total() {
             $("#status").val("");
 
             $.ajax({
@@ -141,8 +142,21 @@
                     for (var ix = 0; ix < d.length; ix++) {
                         var sc = d[ix];
                         console.log(sc);
-                        var str=JSON.stringify(sc);
+                        var str = JSON.stringify(sc);
                         alert(str);
+
+                        // ** next - create table.. ck examples for effective way
+                        // maybe Razor..-but no model...
+                        var txt = "<TR>";
+                        $("#tbl").append(txt);
+                        txt = $("<TD></TD>").text(sc.Code);  // Create text with jQuery
+                        $("#tbl").append(txt);
+                        txt = $("<TD></TD>").text(sc.Quantity);  // Create text with jQuery
+                        $("#tbl").append(txt);
+                        txt = $("<TD></TD>").text(sc.Weight);  // Create text with jQuery
+                        $("#tbl").append(txt);
+                        txt = "</TR>";
+                        $("#tbl").append(txt);
                     }
                 },
 
@@ -234,6 +248,20 @@
 
     <label style="display:inline-block; width:100px">Status</label>
     <input id="status" type="text" style="width:240px" />
+
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Quantity</th>
+                <th>Weight</th>
+            </tr>
+        </thead>
+        <tbody id="tbl">
+            
+        </tbody>
+
+    </table>
 
 </body>
 </html>
