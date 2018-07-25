@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
+//using System.Web.Mvc;
 
 namespace CashRegApi.Controllers
 {
@@ -56,8 +58,12 @@ namespace CashRegApi.Controllers
 				
 		[HttpPost]
 		[Route("ScanByQuantity")]
-		public HttpResponseMessage ScanByQuantity([FromBody]ScanData data)
-		{
+		public HttpResponseMessage ScanByQuantity([FromBody][System.Web.Mvc.Bind]ScanData data)
+		{			
+			//next - handle no code
+			//if ( !ModelState.IsValid )
+			//*******	throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.BadRequest));
+
 			s_data.Add(data);
 
 			return Request.CreateResponse(HttpStatusCode.OK, "Successful scan by quantity");

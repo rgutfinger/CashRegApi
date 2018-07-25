@@ -14,6 +14,10 @@
         function scanByQuantity() {
             $("#status").val("");
 
+            //fails $("#frm").checkValidity();
+            if (!$("#frm")[0].checkValidity())
+                alert("Invalid");
+
             var scan = {
                 Code: $("#code").val(),
                 Quantity: $("#quantity").val(),
@@ -209,7 +213,9 @@
             background-position-x:right; background-position-y:center">Code</label>
         <label style="display:inline-block; width:5px"></label>
         <input id="code" type="number" value="123" min="100" max="999" style="width:45px"
-               accesskey="O" title="[Alt+O]" />
+               accesskey="O" title="[Alt+O]" 
+               required
+               />
         <br />
         <br style="line-height:20px" />
 
