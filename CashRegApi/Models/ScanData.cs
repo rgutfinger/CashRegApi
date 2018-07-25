@@ -8,9 +8,7 @@ namespace CashRegApi.Models
 {
 	public class ScanData
 	{
-		[Required]
 		public string Code;
-
 		public int Quantity;
 		public double Weight;
 	}
