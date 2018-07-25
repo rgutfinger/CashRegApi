@@ -15,8 +15,10 @@
             $("#status").val("");
 
             //fails $("#frm").checkValidity();
-            if (!$("#frm")[0].checkValidity())
+            if (!$("#frm")[0].checkValidity()) {
                 alert("Invalid");
+                return;
+            }
 
             var scan = {
                 Code: $("#code").val(),
