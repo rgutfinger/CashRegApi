@@ -14,9 +14,8 @@
         function scanByQuantity() {
             $("#status").val("");
 
-            //fails $("#frm").checkValidity();
             if (!$("#frm")[0].checkValidity()) {
-                alert("Invalid");
+                alert("Invalid Code");
                 return;
             }
 
@@ -49,6 +48,11 @@
 
         function scanByWeight() {
             $("#status").val("");
+
+            if (!$("#frm")[0].checkValidity()) {
+                alert("Invalid Code");
+                return;
+            }
 
             var scan = {
                 Code: $("#code").val(),
@@ -101,6 +105,11 @@
 
         function discountByCount() {
             $("#status").val("");
+
+            if (!$("#frm")[0].checkValidity()) {
+                alert("Invalid Code");
+                return;
+            }
 
             var disc = {
                 Code: $("#code").val(),
