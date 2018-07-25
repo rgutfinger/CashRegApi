@@ -4,13 +4,11 @@
     <meta charset="utf-8" />
     <title>test</title>
     <!-- link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"-->
+    <link rel="stylesheet" href="content/MyStyleSheet.css" />
     <link rel="stylesheet" href="content/bootstrap.css" />
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+
     <script>
-
-        // ASSUMPTION: buttons are not pressed faster than processing as using AJAX
-        // button event handlers are not synchronous
-
         function scanByQuantity() {
             $("#status").val("");
 
@@ -163,11 +161,7 @@
                     for (var ix = 0; ix < d.length; ix++) {
                         var sc = d[ix];
                         console.log(sc);
-                        //var str = JSON.stringify(sc);
-                        //alert(str);
 
-                        // ** next - create table.. ck examples for effective way
-                        // maybe Razor..-but no model...
                         var txt = "<TR>";
                         $("#tblBody").append(txt);
                         txt = $("<TD></TD>").text(sc.Code);  // Create text with jQuery
@@ -269,7 +263,8 @@
         <br style="line-height:20px" />
         <input type="button" value="Total"
                style="width:105px;background-image: url('Content//Images/Total.bmp');text-indent:-5px;background-size:16px;background-repeat: no-repeat;
-                background-position-x:right; background-position-y:center"
+                background-position-x:right; background-position-y:center;
+                font-weight:bold"
                onclick="calcTotal()" accesskey="T" title="[Alt+T]" />
         <input id="total" type="number" readonly
                style="width:140px" />
@@ -277,7 +272,8 @@
         <br style="line-height:20px" />
         <input type="button" value="Restart"
                style="width:105px;background-image: url('Content//Images/Restart.png');text-indent:-5px;background-size:18px;background-repeat: no-repeat;
-                background-position-x:right; background-position-y:center"
+                background-position-x:right; background-position-y:center;
+                font-weight:bold"
                onclick="restartRegister()" accesskey="R" title="[Alt+R]" />
     </form>
     
@@ -292,7 +288,7 @@
     <br />
 
     <div id="tbl" >
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Code</th>
